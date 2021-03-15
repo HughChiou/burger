@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classes from './NavItems.module.css';
+
 import NavItem from './NavItem.js/NavItem';
+import classes from './NavItems.module.css';
 
 const NavItems = (props) => {
   return (
@@ -13,7 +13,5 @@ const NavItems = (props) => {
     </ul>
   );
 };
-
-NavItems.propTypes = {};
 
 export default NavItems;

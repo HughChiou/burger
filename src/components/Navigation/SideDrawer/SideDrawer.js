@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Aux from '../../../hoc/Empty';
+import Aux from '../../../hoc/Aux/Empty';
 import Logo from '../../Logo/Logo';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import NavItems from '../NavItems/NavItems';
