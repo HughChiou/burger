@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 
@@ -6,14 +7,16 @@ import Aux from '../Aux/Empty';
 const WithErrorHandler = (WrappedComponent, http) => {
   return class extends Component {
     state = { err: null };
+    reqi;
+    respi;
 
     componentWillMount() {
-      http.interceptors.request.use((req) => {
+      this.reqi = http.interceptors.request.use((req) => {
         this.setState({ err: null });
 
         return req;
       });
-      http.interceptors.response.use(
+      this.respi = http.interceptors.response.use(
         (resp) => resp,
         (rej) => {
           console.log({ rej });
@@ -23,6 +26,11 @@ const WithErrorHandler = (WrappedComponent, http) => {
           return rej;
         },
       );
+    }
+
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqi);
+      axios.interceptors.response.eject(this.respi);
     }
 
     errorConfirmHandler = () => {
