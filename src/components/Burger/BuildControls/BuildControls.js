@@ -15,12 +15,14 @@ const BuildControls = (props) => {
   return (
     <div className={styles.BuildControls}>
       <p>
-        Current Price: <strong>${props.price.toFixed(2)}</strong>
+        Current Price:{' '}
+        <strong>${props.price.toFixed(2)}</strong>
       </p>
       {controls.map((ctrl) => (
         <BuildControl
           key={ctrl.label}
           label={ctrl.label}
+          qty={props.ingredients[ctrl.type]}
           added={() => props.ingAdded(ctrl.type)}
           removed={() => props.ingRemoved(ctrl.type)}
           disabled={props.disabled[ctrl.type]}
@@ -42,6 +44,7 @@ BuildControls.propTypes = {
   ingRemoved: PropTypes.func,
   price: PropTypes.number,
   ordered: PropTypes.func,
+  ingredients: PropTypes.object,
 };
 
 export default BuildControls;

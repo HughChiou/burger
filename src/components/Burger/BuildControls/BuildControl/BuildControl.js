@@ -13,8 +13,11 @@ const BuildControl = (props) => {
       >
         Less
       </button>
-      <span>aaa</span>
-      <button className={classes.More} onClick={props.added}>
+      <span>{props.qty}</span>
+      <button
+        className={classes.More}
+        onClick={props.added}
+      >
         More
       </button>
     </div>
@@ -25,6 +28,7 @@ BuildControl.propTypes = {
   label: PropTypes.string,
   added: PropTypes.func,
   removeed: PropTypes.func,
+  qty: PropTypes.number,
 };
 
 export default BuildControl;
