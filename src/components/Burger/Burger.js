@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
@@ -7,9 +8,7 @@ const Burger = (props) => {
     .map((igKey) => {
       return [...Array(props.ingredients[igKey])].map((_, idx) => {
         //   console.log(igKey);
-        return (
-          <BurgerIngredient key={igKey + idx} type={igKey}></BurgerIngredient>
-        );
+        return <BurgerIngredient key={igKey + idx} type={igKey}></BurgerIngredient>;
       });
     })
     .reduce((arr, el) => {
@@ -29,4 +28,4 @@ const Burger = (props) => {
   );
 };
 
-export default Burger;
+export default withRouter(Burger);
