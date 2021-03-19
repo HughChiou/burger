@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Order.module.css';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
 
 const Order = (props) => {
   console.log(props);
@@ -8,9 +10,13 @@ const Order = (props) => {
     <div className={classes.Order}>
       <h3>Order Id: {props.id}</h3>
       {[...Object.entries(props.ingredients)].map((ing) => (
-        <p key={ing[0]}>
-          Ingredients: <span style={{ textTransform: 'capitalize' }}>{ing[0]}</span> ({ing[1]})
-        </p>
+        <Chip
+          key={ing[0]}
+          label={ing[0]}
+          color="secondary"
+          variant="outlined"
+          avatar={<Avatar>{ing[1]}</Avatar>}
+          style={{ textTransform: 'capitalize', margin: '0 3px' }}></Chip>
       ))}
       <p>
         Price: <strong>USD {props.price.toFixed(2)}</strong>
